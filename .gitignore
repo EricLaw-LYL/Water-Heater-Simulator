@@ -1,0 +1,7 @@
+# Local settings and working files
+.DS_Store
+.openai/
+work/
+node_modules/
+coverage/
+*.log
