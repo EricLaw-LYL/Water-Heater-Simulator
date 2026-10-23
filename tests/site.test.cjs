@@ -20,3 +20,16 @@ test('model documentation matches the simulator fingerprint and navigation',()=>
  assert(html.includes(hash),'Refresh the documented simulator SHA-256');
  for(const m of html.matchAll(/href="#([^"]+)"/g))assert(html.includes('id="'+m[1]+'"'));
 });
+
+test('Pages project paths and offline formula fonts resolve',()=>{
+ for(const name of ['index.html','readme.html']){
+  const html=fs.readFileSync(path.join(root,name),'utf8');
+  for(const m of html.matchAll(/(?:src|href)="([^"#]+)"/g))assert(!m[1].startsWith('/'),'Root-relative URL breaks project Pages paths: '+m[1]);
+ }
+ const cssPath=path.join(root,'vendor/katex/katex.min.css');
+ for(const m of fs.readFileSync(cssPath,'utf8').matchAll(/url\(([^)]+)\)/g)){
+  const target=m[1].replace(/^['"]|['"]$/g,'');
+  if(!target.startsWith('data:'))assert(fs.existsSync(path.resolve(path.dirname(cssPath),target)),target);
+ }
+ assert(fs.existsSync(path.join(root,'.nojekyll')));
+});
