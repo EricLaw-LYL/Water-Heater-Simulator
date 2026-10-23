@@ -47,7 +47,6 @@ dist/
   readme.html      Model reference and equations
   vendor/katex/    Offline formula styling, fonts, and license
 tests/             Offline asset, documentation, and interaction checks
-readme-skill/      Reusable instructions for refreshing model documentation
 .github/workflows/ Validation and manual GitHub Pages deployment
 ```
 
@@ -59,7 +58,7 @@ npm test
 
 Checks cover script syntax, local assets and navigation, the documented simulator fingerprint, and legend hover/selection/reset behavior. Tests use a simulated DOM and Canvas; they do not replace a visual browser review.
 
-After changing `dist/index.html`, review `dist/readme.html` and refresh its review date and SHA-256 fingerprint. The `$water-heater-readme` skill describes that review. Do not change only the fingerprint without checking the documentation.
+After changing `dist/index.html`, review `dist/readme.html` and refresh its review date and SHA-256 fingerprint. The optional local `$water-heater-readme` skill describes that review. Its local copy is stored under `.openai/skills/water-heater-readme/`; the entire `.openai/` folder is ignored by Git and is not included when this repository is cloned. Do not change only the fingerprint without checking the documentation.
 
 The experimental `migrate-echarts` branch is retained for comparison. GitHub Pages deployment uses `main`, the preferred Canvas version.
 

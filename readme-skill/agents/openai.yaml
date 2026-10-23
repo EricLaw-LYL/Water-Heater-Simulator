@@ -1,4 +1,0 @@
-interface:
-  display_name: "Water Heater README"
-  short_description: "Refresh simulator documentation from the current build"
-  default_prompt: "Use $water-heater-readme to review the current water-heater build and update its README page, including controls, equations, and model limitations."
